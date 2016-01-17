@@ -15,7 +15,7 @@ RUN mkdir -p /opt/root/{src,build} && \
     cmake --build . --target install && \
     echo ". /opt/root/bin/thisroot.sh" > /etc/profile.d/root.sh && \
     . /opt/root/bin/thisroot.sh && \
-    rm -f /opt/root/{src,build}
+    rm -rf /opt/root/{src,build}
 
 RUN mkdir -p /opt/ptsim/{src,build/PTStoolkit} && \
     mkdir -p /opt/ptsim/build/PTSapps/DynamicPort && \
