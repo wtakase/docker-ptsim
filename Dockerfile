@@ -2,20 +2,6 @@ FROM wtakase/geant4:10.1
 MAINTAINER wtakase <wataru.takase@kek.jp>
 
 ENV PTSIM_VERSION 101-001-003-20151217
-ENV ROOT_VERSION 5.34.34
-
-RUN yum install -y libX11-devel libXpm-devel libXft-devel libXext-devel
-RUN mkdir -p /opt/root/{src,build} && \
-    curl -o /opt/root/root_v${ROOT_VERSION}.source.tar.gz https://root.cern.ch/download/root_v${ROOT_VERSION}.source.tar.gz && \
-    tar zxf /opt/root/root_v${ROOT_VERSION}.source.tar.gz -C /opt/root/src && \
-    rm -f /opt/root/root_v${ROOT_VERSION}.source.tar.gz && \
-    cd /opt/root/build && \
-    cmake -DCMAKE_INSTALL_PREFIX=../ ../src/root && \
-    cmake --build . && \
-    cmake --build . --target install && \
-    echo ". /opt/root/bin/thisroot.sh" > /etc/profile.d/root.sh && \
-    . /opt/root/bin/thisroot.sh && \
-    rm -rf /opt/root/{src,build}
 
 RUN mkdir -p /opt/ptsim/{src,build/PTStoolkit} && \
     mkdir -p /opt/ptsim/build/PTSapps/DynamicPort && \
