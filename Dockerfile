@@ -1,7 +1,7 @@
-FROM wtakase/geant4:10.1
+FROM wtakase/geant4:9.6
 MAINTAINER wtakase <wataru.takase@kek.jp>
 
-ENV PTSIM_VERSION 101-001-003-20151217
+ENV PTSIM_VERSION 963-003-000
 
 RUN mkdir -p /opt/ptsim/{src,build/PTStoolkit} && \
     mkdir -p /opt/ptsim/build/PTSapps/DynamicPort && \
