@@ -1,4 +1,4 @@
-FROM wtakase/geant4:10.1
+FROM wtakase/geant4:10.1-centos7
 MAINTAINER wtakase <wataru.takase@kek.jp>
 
 ENV PTSIM_VERSION 101-001-003-20151217
