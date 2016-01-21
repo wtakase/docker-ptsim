@@ -3,8 +3,9 @@ MAINTAINER wtakase <wataru.takase@kek.jp>
 
 ENV PTSIM_VERSION 963-003-000
 
-RUN . /etc/profile.d/geant4.sh
-RUN mkdir -p /opt/ptsim/{src,build/PTStoolkit} && \
+RUN /bin/bash -c "source /etc/profile.d/geant4.sh && \
+    source /etc/profile.d/root.sh && \
+    mkdir -p /opt/ptsim/{src,build/PTStoolkit} && \
     mkdir -p /opt/ptsim/build/PTSapps/DynamicPort && \
     mkdir -p /opt/ptsim/{PTStoolkit,PTSapps/DynamicPort} && \
     curl -o /opt/ptsim/PTSproject-${PTSIM_VERSION}.tar.gz http://wiki.kek.jp/download/attachments/5343876/PTSproject-${PTSIM_VERSION}.tar.gz && \
@@ -16,4 +17,4 @@ RUN mkdir -p /opt/ptsim/{src,build/PTStoolkit} && \
     cd /opt/ptsim/build/PTSapps/DynamicPort && \
     cmake -DUSEROOT=ON -DCMAKE_INSTALL_PREFIX=../../../PTSapps/DynamicPort -DUSEIAEAPHSP=ON -DIAEAPHSP_WRITE_USE=ON ../../../src/PTSproject/PTSapps/DynamicPort && \
     make -j`grep -c processor /proc/cpuinfo` && make install && \
-    rm -rf /opt/ptsim/{src,build}
+    rm -rf /opt/ptsim/{src,build}"
